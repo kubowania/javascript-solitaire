@@ -3,24 +3,24 @@
     const suit = suit;
      
     if(suit === "spades"){
-        const suitIcon = "&#x2664"
+        suit = "&#x2664"
      }
     else if(suit === "clubs"){
-        const suitIcon = "&#x2667"
+         suit = "&#x2667"
      }
     else if(suit === "diamonds"){
-        const suitIcon = "&#x2662"
+         suit= "&#x2662"
      }
     else if (suit === "heats"){
-        const suitIcon = "&#x2661"
+        suit = "&#x2661"
     }
      
 
     const card = ` <div class="card_container">
                      < div class= "card" >
                          <p class="cardnum">${num}</p>
-                         <div class="suit">${suitIcon}</div>
-                            <div class="bigsuit">${suitIcon}</div>
+                         <div class="suit">${suit}</div>
+                            <div class="bigsuit">${suit}</div>
                     </div >
                  </div > `
 
