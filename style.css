@@ -1,0 +1,60 @@
+@import url("https://fonts.googleapis.com/css?family=Lato:200,300,400,400i,700");
+@import url("https://fonts.googleapis.com/css?family=Merriweather:200,400,400i,700");
+
+body {
+    background-color: #181818;
+    font-family: Merriweather;
+    color: #d8d8d8;
+}
+h1{
+    text-align: center;
+}
+p{
+    font-family: Lato;
+}
+.card_container {
+display: flex;
+
+}
+#card{
+   
+    flex-wrap: wrap;
+}
+.card {
+    margin: 10px;
+    width: 160px;
+    height: 240px;
+    border-radius: 5px;
+    background: #fff;
+}
+
+.♡,
+.♢ {
+    color: red;
+}
+
+.♤,
+.♧ {
+    color: black;
+}
+
+.cardnum {
+    margin: 10px;
+    margin-bottom:0px;
+    font-size: 20px;
+}
+.suit {
+    margin: 10px;
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 20px;
+}
+.bigsuit{
+    margin: 0px;
+    margin-bottom: 30px;
+    font-size: 175px;
+    text-align: center;
+    position: relative;
+    top: -80px;
+    
+}
