@@ -11,6 +11,7 @@ function createCard(num, suit) {
         centerSuit.push(`<div class="center-suits">${suit.code}</div>`)
     }
     
+    let joinedCenterSuites = centerSuit.join("")
     
     const cardTemp = ` <div class="card-container">
                         <div class="card ${suit.name}" >
@@ -19,7 +20,7 @@ function createCard(num, suit) {
                                 <div class="suit">${suit.code}</div>
                             </div>
                             <div class="center-suits-container">
-                            ${centerSuit}
+                            ${joinedCenterSuites}
                             </div>
                             <div class="card-title-bottom">
                                 <p class="card-num">${num}</p>
