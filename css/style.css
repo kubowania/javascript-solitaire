@@ -93,3 +93,27 @@ p {
     align-items: center;
     height: 35%;
 }
+
+.foundation-holder {
+    height: 40vh;
+    width: 99vw;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.foundation {
+    height: 240px;
+    width: 160px;
+    border: 3px solid rgb(0, 0, 0);
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.1);
+    margin: 5px;
+}
+
+.suits-holder {
+    height: 225px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
