@@ -1,6 +1,6 @@
 function createCard(num, suit) {
     let centerSuit= []
-    // console.log(num)
+
     console.log(typeof num)
     if (typeof num == "number"){
     for(let i=0;i<num; i++){
@@ -12,6 +12,7 @@ function createCard(num, suit) {
     }
     
     let joinedCenterSuites = centerSuit.join("")
+    console.log(joinedCenterSuites)
     
     const cardTemp = ` <div class="card-container">
                         <div class="card ${suit.name}" >
