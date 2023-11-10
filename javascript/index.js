@@ -24,3 +24,4 @@ for (let i = 0; i < numArray.length; i++) {
         createCard(numArray[i], suitArray[j])
     }
 }
+
