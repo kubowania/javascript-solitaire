@@ -15,13 +15,10 @@ p {
     font-family: Lato;
 }
 
-.card_container {
-    display: flex;
 
-}
 
 #card {
-
+    display: flex;
     flex-wrap: wrap;
 }
 
@@ -57,6 +54,16 @@ p {
     align-items: center;
 }
 
+.card-title-bottom {
+    display: flex;
+    flex-direction: column;
+    width: 40px;
+    align-items: center;
+    transform: rotate(180deg);
+    position: relative;
+    left: 120px;
+}
+
 .suit {
     margin: 10px;
     margin-top: 0;
@@ -64,16 +71,27 @@ p {
     font-size: 20px;
 }
 
-.bigsuit {
+.center-suits-container {
+    display: flex;
+    flex-wrap: wrap-reverse;
+    justify-content: center;
+    align-items: center;
+    height: 110px;
+    width: 120px;
+    position: relative;
+    left: 20px;
+
+}
+
+.center-suits {
     margin: 0;
     padding: 0;
-    font-size: 155px;
+    font-size: 30px;
     position: relative;
-    top: -60px;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100%;
+    height: 35%;
 }
 
 .foundation-holder {
