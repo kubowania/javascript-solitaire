@@ -5,6 +5,7 @@ body {
     background-color: #181818;
     font-family: Merriweather;
     color: #d8d8d8;
+    
 }
 
 h1 {
@@ -28,7 +29,9 @@ p {
     height: 240px;
     border-radius: 5px;
     background: #fff;
+    background-color: white;
     overflow: hidden;
+    filter: drop-shadow( #4A4A4A -3px -3px 3px);
 }
 
 .hearts,
@@ -93,7 +96,9 @@ p {
     align-items: center;
     height: 35%;
 }
-
+.stock-foundation{
+    display: flex;
+}
 .foundation-holder {
     height: 40vh;
     width: 99vw;
@@ -110,6 +115,30 @@ p {
     background-color: rgba(255, 255, 255, 0.1);
     margin: 5px;
 }
+.stock-container{
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+.stock {
+    height: 240px;
+    width: 160px;
+    border: 3px solid rgb(0, 0, 0);
+    border-radius: 5px;
+    background-color: rgba(230, 220, 230, 0.1);
+    
+}
+.waste-container{
+    margin-left: 20px;
+    display: grid;
+    grid-template-columns: 50px 50px 50px ;
+  }
+  .waste-container:nth-child(3){
+    
+    z-index: 10;
+  }
+
+
 
 .suits-holder {
     height: 225px;

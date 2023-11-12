@@ -19,9 +19,28 @@ const suitArray = [
     },
 ]
 
-for (let i = 0; i < numArray.length; i++) {
-    for (let j = 0; j < suitArray.length; j++) {
-        createCard(numArray[i], suitArray[j])
-    }
-}
+// for (let i = 0; i < numArray.length; i++) {
+//     for (let j = 0; j < suitArray.length; j++) {
+//         createCard(numArray[i], suitArray[j])
+//     }
+// }
+const stock = document.querySelector(".stock")
+const wasteContainer = document.querySelector(".waste-container")
+function revealstock() {
 
+    if(wasteContainer.firstChild){
+        console.log("true")
+        wasteContainer.firstChild.remove()
+        for (let i = 0; i < 3; i ++) {
+        
+            createCard(numArray[i], suitArray[1], "waste-container")
+        
+    }
+    }
+    else
+    console.log("false")
+   
+    
+    
+}
+stock.addEventListener("click", revealstock)

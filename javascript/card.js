@@ -1,7 +1,7 @@
-function createCard(num, suit) {
+function createCard(num, suit, container) {
     let centerSuit= []
 
-    console.log(typeof num)
+    
     if (typeof num == "number"){
     for(let i=0;i<num; i++){
         centerSuit.push(`<div class="center-suits">${suit.code}</div>`)
@@ -12,7 +12,7 @@ function createCard(num, suit) {
     }
     
     let joinedCenterSuites = centerSuit.join("")
-    console.log(joinedCenterSuites)
+    
     
     const cardTemp = ` <div class="card-container">
                         <div class="card ${suit.name}" >
@@ -31,7 +31,7 @@ function createCard(num, suit) {
                     </div > `
 
                 
-    const el = document.querySelector("#card")
+    const el = document.querySelector(`.${container}`)
     const filledCard = document.createElement("div")
     filledCard.innerHTML = cardTemp
     el.append(filledCard)
