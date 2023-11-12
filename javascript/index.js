@@ -26,21 +26,36 @@ const suitArray = [
 // }
 const stock = document.querySelector(".stock")
 const wasteContainer = document.querySelector(".waste-container")
+const childern = wasteContainer.children
 function revealstock() {
+    console.log(childern.length)
+    if (wasteContainer.children.length < 3) {
 
-    if(wasteContainer.firstChild){
-        console.log("true")
-        wasteContainer.firstChild.remove()
-        for (let i = 0; i < 3; i ++) {
-        
+
+        for (let i = 0; i < 3; i++) {
+
             createCard(numArray[i], suitArray[1], "waste-container")
+
+        }
+        console.log(childern.length)
+    }
+    else if (wasteContainer.children.length >= 3) {
+
         
+        
+            while (wasteContainer.firstChild) {
+                wasteContainer.removeChild(wasteContainer.firstChild);
+            }
+        
+        for (let i = 0; i < 3; i++) {
+
+            createCard(numArray[i], suitArray[1], "waste-container")
+
+        }
+
     }
-    }
-    else
-    console.log("false")
-   
-    
-    
+
+
+
 }
 stock.addEventListener("click", revealstock)
