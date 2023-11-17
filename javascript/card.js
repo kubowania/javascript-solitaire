@@ -35,5 +35,5 @@ function createCard(num, suit) {
     const filledCard = document.createElement("div")
     filledCard.innerHTML = cardTemp
     el.append(filledCard)
-
+    return filledCard;
 }
