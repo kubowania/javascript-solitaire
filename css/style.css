@@ -2,118 +2,157 @@
 @import url("https://fonts.googleapis.com/css?family=Merriweather:200,400,400i,700");
 
 body {
-    background-color: #181818;
-    font-family: Merriweather;
-    color: #d8d8d8;
+  background-color: #181818;
+  font-family: Merriweather;
+  color: #d8d8d8;
 }
 
 h1 {
-    text-align: center;
+  text-align: center;
 }
 
 p {
-    font-family: Lato;
+  font-family: Lato;
 }
 
-
-
 #card {
-    display: flex;
-    flex-wrap: wrap;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .card {
-    margin: 10px;
-    width: 160px;
-    height: 240px;
-    border-radius: 5px;
-    background: #fff;
-    overflow: hidden;
+  margin: 10px;
+  width: 160px;
+  height: 240px;
+  border-radius: 5px;
+  background: #fff;
+  overflow: hidden;
 }
 
 .hearts,
 .diamonds {
-    color: red;
+  color: red;
 }
 
 .spades,
 .clubs {
-    color: black;
+  color: black;
 }
 
 .card-num {
-    margin: 10px;
-    margin-bottom: 0px;
-    font-size: 20px;
+  margin: 10px;
+  margin-bottom: 0px;
+  font-size: 20px;
 }
 
 .card-title {
-    display: flex;
-    flex-direction: column;
-    width: 40px;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  width: 40px;
+  align-items: center;
 }
 
 .card-title-bottom {
-    display: flex;
-    flex-direction: column;
-    width: 40px;
-    align-items: center;
-    transform: rotate(180deg);
-    position: relative;
-    left: 120px;
+  display: flex;
+  flex-direction: column;
+  width: 40px;
+  align-items: center;
+  transform: rotate(180deg);
+  position: relative;
+  left: 120px;
 }
 
 .suit {
-    margin: 10px;
-    margin-top: 0;
-    margin-bottom: 0;
-    font-size: 20px;
+  margin: 10px;
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: 20px;
 }
 
 .center-suits-container {
-    display: flex;
-    flex-wrap: wrap-reverse;
-    justify-content: center;
-    align-items: center;
-    height: 110px;
-    width: 120px;
-    position: relative;
-    left: 20px;
-
+  display: flex;
+  flex-wrap: wrap-reverse;
+  justify-content: center;
+  align-items: center;
+  height: 110px;
+  width: 120px;
+  position: relative;
+  left: 20px;
 }
 
 .center-suits {
-    margin: 0;
-    padding: 0;
-    font-size: 30px;
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 35%;
+  margin: 0;
+  padding: 0;
+  font-size: 30px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 35%;
 }
 
 .foundation-holder {
-    height: 40vh;
-    width: 99vw;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
+  height: 40vh;
+  width: 99vw;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
 }
 
 .foundation {
-    height: 240px;
-    width: 160px;
-    border: 3px solid rgb(0, 0, 0);
-    border-radius: 5px;
-    background-color: rgba(255, 255, 255, 0.1);
-    margin: 5px;
+  height: 240px;
+  width: 160px;
+  border: 3px solid rgb(0, 0, 0);
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.1);
+  margin: 5px;
 }
 
 .suits-holder {
-    height: 225px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  height: 225px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-back {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 160px;
+  height: 240px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.card-border {
+  width: 150px;
+  height: 230px;
+  background-color: red;
+  border-radius: 5px;
+}
+
+.card-back::before {
+  content: ""; /*  This will insert empty content for our psuedo element - before */
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(
+      45deg,
+      white 20%,
+      transparent 20%,
+      transparent 80%,
+      white 80%
+    ),
+    linear-gradient(
+      45deg,
+      white 20%,
+      transparent 20%,
+      transparent 80%,
+      white 80%
+    );
+  background-size: 7px 7px;
 }
