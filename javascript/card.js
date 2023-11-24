@@ -1,4 +1,4 @@
-function createCard(num, suit, container) {
+function createCard(num, suit) {
     let centerSuit= []
 
     
@@ -31,9 +31,9 @@ function createCard(num, suit, container) {
                     </div > `
 
                 
-    const el = document.querySelector(`.${container}`)
+    const el = document.querySelector(".waste-container")
     const filledCard = document.createElement("div")
     filledCard.innerHTML = cardTemp
     el.append(filledCard)
-
+    return filledCard;
 }
