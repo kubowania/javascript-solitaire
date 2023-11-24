@@ -124,6 +124,7 @@ p {
 }
 
 .tableau-holder {
+    position: relative;
     height: 40vh;
     width: 99vw;
     display: flex;

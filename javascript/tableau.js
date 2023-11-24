@@ -21,11 +21,7 @@ function createFoundationPiles() {
         faceCard.style.top = `${maxOffset + 5}px`;
         innerCard.style.margin = "0px";
         card.appendChild(faceCard)
-
     });
-
-
-
 }
 
 createFoundationPiles();
