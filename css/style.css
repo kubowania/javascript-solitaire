@@ -115,7 +115,7 @@ p {
     background-color: rgba(255, 255, 255, 0.1);
     margin: 5px;
 }
-.stock-container{
+.stock-container {
     display: flex;
     gap: 20px;
     align-items: center;
@@ -126,19 +126,17 @@ p {
     border: 3px solid rgb(0, 0, 0);
     border-radius: 5px;
     background-color: rgba(230, 220, 230, 0.1);
-    
 }
-.waste-container{
+
+.waste-container {
     margin-left: 20px;
     display: grid;
-    grid-template-columns: 50px 50px 50px ;
-  }
-  .waste-container:nth-child(3){
-    
+    grid-template-columns: 50px 50px 50px;
+}
+
+.waste-container:nth-child(3) {
     z-index: 10;
-  }
-
-
+}
 
 .suits-holder {
     height: 225px;
