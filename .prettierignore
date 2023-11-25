@@ -2,3 +2,7 @@
 build
 coverage
 .vscode
+
+# Ignore files
+package.json
+.prettierrc
