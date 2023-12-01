@@ -1,19 +1,16 @@
 function createCard(num, suit) {
-    let centerSuit= []
+    let centerSuit = []
 
-    
-    if (typeof num == "number"){
-    for(let i=0;i<num; i++){
-        centerSuit.push(`<div class="center-suits">${suit.code}</div>`)
-       
-    }}
-    else {
+    if (typeof num == "number") {
+        for (let i = 0; i < num; i++) {
+            centerSuit.push(`<div class="center-suits">${suit.code}</div>`)
+        }
+    } else {
         centerSuit.push(`<div class="center-suits">${suit.code}</div>`)
     }
-    
+
     let joinedCenterSuites = centerSuit.join("")
-    
-    
+
     const cardTemp = ` <div class="card-container">
                         <div class="card ${suit.name}" >
                             <div class="card-title">
@@ -30,10 +27,9 @@ function createCard(num, suit) {
                          </div >
                     </div > `
 
-                
     const el = document.querySelector(".waste-container")
     const filledCard = document.createElement("div")
     filledCard.innerHTML = cardTemp
     el.append(filledCard)
-    return filledCard;
+    return filledCard
 }

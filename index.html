@@ -1,52 +1,50 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>JavaScript-Solitaire</title>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>JavaScript-Solitaire</title>
+        <link href="./css/style.css" rel="stylesheet" type="text/css" />
+    </head>
 
-  <link href="./css/style.css" rel="stylesheet" type="text/css" />
-</head>
+    <body>
+        <h1>Solitaire</h1>
+        <div class="stock-foundation">
+            <div class="stock-container">
+                <div class="stock"></div>
+                <div class="waste-container"></div>
+            </div>
 
-<body>
-    <h1>Solitaire</h1>
-    <div class="stock-foundation">
-      <div class="stock-container">
-        <div class="stock"></div>
-        <div class="waste-container"></div>
-      </div>
+            <div id="foundation-holder" class="foundation-holder">
+                <div id="foundation-1" class="foundation"></div>
+                <div id="foundation-2" class="foundation"></div>
+                <div id="foundation-3" class="foundation"></div>
+                <div id="foundation-4" class="foundation"></div>
+            </div>
+        </div>
 
-      <div id="foundation-holder" class="foundation-holder">
-        <div id="foundation-1" class="foundation"></div>
-        <div id="foundation-2" class="foundation"></div>
-        <div id="foundation-3" class="foundation"></div>
-        <div id="foundation-4" class="foundation"></div>
-      </div>
-    </div>
+        <div id="tableau-holder" class="tableau-holder">
+            <div id="tableau-pile-1" class="tableau-pile"></div>
+            <div id="tableau-pile-2" class="tableau-pile"></div>
+            <div id="tableau-pile-3" class="tableau-pile"></div>
+            <div id="tableau-pile-4" class="tableau-pile"></div>
+            <div id="tableau-pile-5" class="tableau-pile"></div>
+            <div id="tableau-pile-6" class="tableau-pile"></div>
+            <div id="tableau-pile-7" class="tableau-pile"></div>
+        </div>
 
-    <div id="tableau-holder" class="tableau-holder">
-      <div id="tableau-pile-1" class="tableau-pile"></div>
-      <div id="tableau-pile-2" class="tableau-pile"></div>
-      <div id="tableau-pile-3" class="tableau-pile"></div>
-      <div id="tableau-pile-4" class="tableau-pile"></div>
-      <div id="tableau-pile-5" class="tableau-pile"></div>
-      <div id="tableau-pile-6" class="tableau-pile"></div>
-      <div id="tableau-pile-7" class="tableau-pile"></div>
-    </div>
+        <div id="card"></div>
+        <div class="card-back">
+            <div class="card-border"></div>
+        </div>
 
-    <div id="card"></div>
-    <div class="card-back">
-      <div class="card-border"></div>
-    </div>
-
-    <p>JavaScript Solitaire Game</p>
-    <p>We are creating tickets!</p>
-    <footer>solitaire@test.com</footer>
-</body>
-<script src="./javascript/card.js"></script>
-<script src="./javascript/index.js"></script>
-<script src="./javascript/foundation.js"></script>
-<script src="./javascript/tableau.js"></script>
-
+        <p>JavaScript Solitaire Game</p>
+        <p>We are creating tickets!</p>
+        <footer>solitaire@test.com</footer>
+    </body>
+    <script src="./javascript/card.js"></script>
+    <script src="./javascript/index.js"></script>
+    <script src="./javascript/foundation.js"></script>
+    <script src="./javascript/tableau.js"></script>
 </html>
