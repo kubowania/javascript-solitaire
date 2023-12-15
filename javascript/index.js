@@ -85,15 +85,14 @@ function mapDeckToPiles() {
 
 // "Shuffles" an array of cards
 function shuffleCards(array) {
-    // for (let i = 0; i < cardsArray.length; i++) {
-    //     // use Math.random to choose an element in the array after the current one
-    //     // and swap it with the current element
-    //     let j = Math.floor(Math.random() * (cardsArray.length - i - 1) + i)
-    //     [cardsArray[i], cardsArray[j]] = [cardsArray[j], cardsArray[i]]
-    // }
-
-    // Use Math.random to sort cards
-    array.sort(() => Math.random() - 0.5)
+    for (let i = array.length - 1; i > 0; i--) {
+        // use Math.random to choose an element in the array after the current one
+        // and swap it with the current element
+        let j = Math.floor(Math.random() * (i + 1))
+        let temp = array[i]
+        array[i] = array[j]
+        array[j] = temp
+    }
 
     return array
 }
