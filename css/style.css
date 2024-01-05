@@ -156,9 +156,12 @@ p {
 
 .suits-holder {
     height: 225px;
+    width: 159px;
     display: flex;
     align-items: center;
     justify-content: center;
+    position: absolute;
+    z-index: 0;
 }
 
 .card-back {
@@ -215,4 +218,8 @@ p {
 .tableau-pile .card-container,
 .card-back {
     border: 3px solid rgb(0, 0, 0);
+}
+
+.drag-over {
+    border: 3px solid rgb(255, 0, 0);
 }

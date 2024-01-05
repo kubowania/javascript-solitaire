@@ -54,6 +54,7 @@ function revealStock() {
             createCard(numArray[num ?? i], suitArray[suit ?? 1])
         }
     }
+    getDraggableCards()
 }
 stock.addEventListener("click", revealStock)
 
@@ -95,6 +96,50 @@ function shuffleCards(array) {
     }
 
     return array
+}
+
+// Cards will have their ids tracked for drag events
+function getDraggableCards() {
+    const selectedCards = document.querySelectorAll(".moveableCard")
+    selectedCards.forEach((selectedCard) => {
+        selectedCard.addEventListener("dragstart", (e) => {
+            e.dataTransfer.setData("text/plain", e.target.id)
+        })
+    })
+}
+
+// Enable event listeners for the piles the cards will be dragged into
+function dragCard() {
+    const foundationStacks = document.querySelectorAll(".foundation")
+    const tableauPiles = document.querySelectorAll(".tableau-pile")
+
+    getDraggableCards()
+    dragToPile(foundationStacks)
+    dragToPile(tableauPiles)
+
+    function dragToPile(piles) {
+        piles.forEach((pile, index) => {
+            pile.addEventListener("dragenter", (e) => {
+                e.preventDefault()
+                e.target.classList.add("drag-over")
+            })
+            pile.addEventListener("dragleave", (e) => {
+                e.target.classList.remove("drag-over")
+            })
+            pile.addEventListener("dragover", (e) => {
+                e.preventDefault()
+                e.target.classList.add("drag-over")
+            })
+            pile.addEventListener("drop", (e) => {
+                e.preventDefault()
+                e.target.classList.remove("drag-over")
+                const cardId = e.dataTransfer.getData("text/plain")
+                const draggedCard = document.getElementById(cardId)
+
+                pile.append(draggedCard)
+            })
+        })
+    }
 }
 
 mapDeckToPiles()

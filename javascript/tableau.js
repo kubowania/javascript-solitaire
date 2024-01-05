@@ -33,6 +33,7 @@ function createTableauPiles() {
         innerCard.style.margin = "0px"
         card.appendChild(faceCard)
     })
+    dragCard()
 }
 
 createTableauPiles()

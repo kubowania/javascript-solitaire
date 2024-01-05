@@ -29,6 +29,9 @@ function createCard(num, suit) {
 
     const el = document.querySelector(".waste-container")
     const filledCard = document.createElement("div")
+    filledCard.setAttribute("draggable", "true")
+    filledCard.classList.add("moveableCard")
+    filledCard.id = num + suit.name
     filledCard.innerHTML = cardTemp
     el.append(filledCard)
     return filledCard
