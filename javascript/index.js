@@ -100,7 +100,7 @@ function shuffleCards(array) {
 
 // Cards will have their ids tracked for drag events
 function getDraggableCards() {
-    const selectedCards = document.querySelectorAll(".moveableCard")
+    const selectedCards = document.querySelectorAll(".moveable-card")
     selectedCards.forEach((selectedCard) => {
         selectedCard.addEventListener("dragstart", (e) => {
             e.dataTransfer.setData("text/plain", e.target.id)
