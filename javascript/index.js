@@ -1,5 +1,19 @@
 // Creates a card that takes the num and suit of the playing card.
-const numArray = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"]
+const numArray = [
+    "A",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9",
+    "10",
+    "J",
+    "Q",
+    "K",
+]
 const suitArray = [
     {
         name: "spades",
@@ -29,7 +43,7 @@ const tableauPiles = []
 const stockCards = []
 
 // Create a holder for the foundation piles
-const foundationPiles = Array.from({length: 4}, () => [])
+const foundationPiles = Array.from({ length: 4 }, () => [])
 
 // "Enum" for the card piles
 const Piles = Object.freeze({
@@ -138,19 +152,19 @@ function dragCard() {
                 e.target.classList.remove("drag-over")
                 const cardId = e.dataTransfer.getData("text/plain")
                 const draggedCard = document.getElementById(cardId)
-                
+
                 if (pile.classList.contains("foundation")) {
                     let isValidCard = checkFoundationPile(pile.id, cardId)
                     if (isValidCard) {
                         draggedCard.style.position = "absolute"
                         draggedCard.style.top = "unset"
-                        draggedCard.firstElementChild.firstElementChild.style.margin = "0px"
+                        draggedCard.firstElementChild.firstElementChild.style.margin =
+                            "0px"
                         pile.append(draggedCard)
                     }
                 } else if (pile.classList.contains("tableau-pile")) {
                     pile.append(draggedCard)
                 }
-
             })
         })
     }
@@ -160,12 +174,15 @@ function checkFoundationPile(foundationId, cardId) {
     const foundId = foundationId.slice(-1) - 1
     const cardNum = cardId[0] == 1 ? cardId.substring(0, 2) : cardId[0]
     const cardSuit = cardId[0] == 1 ? cardId.subtring(2) : cardId.substring(1)
-    const suitIndex = suitArray.findIndex(x => x.name == cardSuit)
+    const suitIndex = suitArray.findIndex((x) => x.name == cardSuit)
     const numIndex = numArray.indexOf(cardNum)
     const cardStatus = cardDeckStatus[suitIndex][numIndex]
-    if (foundationPiles[foundId].length === numIndex && cardStatus !== Piles.Foundation) {
+    if (
+        foundationPiles[foundId].length === numIndex &&
+        cardStatus !== Piles.Foundation
+    ) {
         foundationPiles[foundId].push(cardId)
-        cardDeckStatus[suitIndex][numIndex] = Piles.Foundation;
+        cardDeckStatus[suitIndex][numIndex] = Piles.Foundation
         return true
     }
     return false
