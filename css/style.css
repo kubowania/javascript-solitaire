@@ -223,3 +223,9 @@ p {
 .drag-over {
     border: 3px solid rgb(255, 0, 0);
 }
+
+.tableau-pile .card-container,
+.foundation .card-contanier {
+    position: absolute;
+    z-index: 100;
+}

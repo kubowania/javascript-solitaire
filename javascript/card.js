@@ -1,7 +1,7 @@
 function createCard(num, suit) {
     let centerSuit = []
 
-    if (typeof num == "number") {
+    if (parseInt(num) !== NaN) {
         for (let i = 0; i < num; i++) {
             centerSuit.push(`<div class="center-suits">${suit.code}</div>`)
         }
