@@ -153,16 +153,12 @@ function dragCard() {
                 const cardId = e.dataTransfer.getData("text/plain")
                 const draggedCard = document.getElementById(cardId)
 
-                if (pile.classList.contains("foundation")) {
-                    let isValidCard = checkFoundationPile(pile.id, cardId)
-                    if (isValidCard) {
-                        draggedCard.style.position = "absolute"
-                        draggedCard.style.top = "unset"
-                        draggedCard.firstElementChild.firstElementChild.style.margin =
-                            "0px"
-                        pile.append(draggedCard)
-                    }
-                } else if (pile.classList.contains("tableau-pile")) {
+                let isValidCard = checkDragToPile(pile, cardId)
+                if (isValidCard) {
+                    draggedCard.style.position = "absolute"
+                    draggedCard.style.top = "unset"
+                    draggedCard.firstElementChild.firstElementChild.style.margin =
+                        "0px"
                     pile.append(draggedCard)
                 }
             })
@@ -170,19 +166,27 @@ function dragCard() {
     }
 }
 
-function checkFoundationPile(foundationId, cardId) {
-    const foundId = foundationId.slice(-1) - 1
+function checkDragToPile(pile, cardId) {
+    const pileNumberId = pile.id.slice(-1) - 1
+
+    // Get the number and the suit of the current card
     const cardNum = cardId[0] == 1 ? cardId.substring(0, 2) : cardId[0]
     const cardSuit = cardId[0] == 1 ? cardId.subtring(2) : cardId.substring(1)
     const suitIndex = suitArray.findIndex((x) => x.name == cardSuit)
     const numIndex = numArray.indexOf(cardNum)
     const cardStatus = cardDeckStatus[suitIndex][numIndex]
-    if (
-        foundationPiles[foundId].length === numIndex &&
-        cardStatus !== Piles.Foundation
-    ) {
-        foundationPiles[foundId].push(cardId)
-        cardDeckStatus[suitIndex][numIndex] = Piles.Foundation
+    if (pile.classList.contains("foundation")) {
+        if (
+            foundationPiles[pileNumberId].length === numIndex &&
+            cardStatus !== Piles.Foundation
+        ) {
+            //foundationPiles[pileNumberId].push(cardId)
+            cardDeckStatus[suitIndex][numIndex] = Piles.Foundation
+            return true
+        }
+    }
+    if (pile.classList.contains("tableau-pile")) {
+        cardDeckStatus[suitIndex][numIndex] = Piles.Tableau
         return true
     }
     return false
