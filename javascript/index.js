@@ -37,7 +37,7 @@ const suitArray = [
 const cardDeckStatus = Array.from({ length: 4 }, () => Array(13).fill(0))
 
 // Create a holder for the initial tableau cards
-const tableauPiles = []
+const initialTableauCards = []
 
 // Create a holder for the initial stock cards
 const stockCards = []
@@ -45,12 +45,18 @@ const stockCards = []
 // Create a holder for the foundation piles
 const foundationPiles = Array.from({ length: 4 }, () => [])
 
+// Create a holder for the tableau piles
+const tableauPiles = Array.from({ length: 7 }, () => [])
+
 // "Enum" for the card piles
 const Piles = Object.freeze({
     Foundation: "F",
     Stock: "S",
     Tableau: "T",
 })
+
+const TABLEAU = "tableau-pile"
+const FOUNDATION = "foundation"
 
 const stock = document.querySelector(".stock")
 const wasteContainer = document.querySelector(".waste-container")
@@ -93,12 +99,12 @@ function mapDeckToPiles() {
         if (cardsArray[i] === Piles.Stock) {
             stockCards.push([cardNum, cardSuit])
         } else if (cardsArray[i] === Piles.Tableau) {
-            tableauPiles.push([cardNum, cardSuit])
+            initialTableauCards.push([cardNum, cardSuit])
         }
     }
 
     shuffleCards(stockCards)
-    shuffleCards(tableauPiles)
+    shuffleCards(initialTableauCards)
 }
 
 // "Shuffles" an array of cards
@@ -120,7 +126,9 @@ function getDraggableCards() {
     const selectedCards = document.querySelectorAll(".moveable-card")
     selectedCards.forEach((selectedCard) => {
         selectedCard.addEventListener("dragstart", (e) => {
-            e.dataTransfer.setData("text/plain", e.target.id)
+            const transferData =
+                e.target.id + "," + selectedCard.parentElement.id
+            e.dataTransfer.setData("text/plain", transferData)
         })
     })
 }
@@ -128,11 +136,11 @@ function getDraggableCards() {
 // Enable event listeners for the piles the cards will be dragged into
 function dragCard() {
     const foundationStacks = document.querySelectorAll(".foundation")
-    const tableauPiles = document.querySelectorAll(".tableau-pile")
+    const tableauStacks = document.querySelectorAll(".tableau-pile")
 
     getDraggableCards()
     dragToPile(foundationStacks)
-    dragToPile(tableauPiles)
+    dragToPile(tableauStacks)
 
     function dragToPile(piles) {
         piles.forEach((pile, index) => {
@@ -150,13 +158,25 @@ function dragCard() {
             pile.addEventListener("drop", (e) => {
                 e.preventDefault()
                 e.target.classList.remove("drag-over")
-                const cardId = e.dataTransfer.getData("text/plain")
+                const data = e.dataTransfer.getData("text/plain").split(",")
+                const [cardId, previousPileId] = data
                 const draggedCard = document.getElementById(cardId)
 
-                let isValidCard = checkDragToPile(pile, cardId)
+                let isValidCard = checkDragToPile(
+                    pile.id,
+                    cardId,
+                    previousPileId
+                )
                 if (isValidCard) {
+                    if (pile.id.startsWith(TABLEAU)) {
+                        // Calculate the card position for the active tableau pile
+                        const size = tableauPiles[index].length - 1
+                        const offset = 20 + size * 15
+                        draggedCard.style.top = `${offset}px`
+                    } else {
+                        draggedCard.style.top = "unset"
+                    }
                     draggedCard.style.position = "absolute"
-                    draggedCard.style.top = "unset"
                     draggedCard.firstElementChild.firstElementChild.style.margin =
                         "0px"
                     pile.append(draggedCard)
@@ -166,27 +186,41 @@ function dragCard() {
     }
 }
 
-function checkDragToPile(pile, cardId) {
-    const pileNumberId = pile.id.slice(-1) - 1
+function checkDragToPile(pileId, cardId, previousPileId) {
+    const pileNumberId = pileId.slice(-1) - 1
+    const previousPileNumberId = previousPileId
+        ? previousPileId.slice(-1) - 1
+        : -1
 
     // Get the number and the suit of the current card
     const cardNum = cardId[0] == 1 ? cardId.substring(0, 2) : cardId[0]
-    const cardSuit = cardId[0] == 1 ? cardId.subtring(2) : cardId.substring(1)
+    const cardSuit = cardId[0] == 1 ? cardId.substring(2) : cardId.substring(1)
     const suitIndex = suitArray.findIndex((x) => x.name == cardSuit)
     const numIndex = numArray.indexOf(cardNum)
     const cardStatus = cardDeckStatus[suitIndex][numIndex]
-    if (pile.classList.contains("foundation")) {
+
+    // update the status of the piles after the card has been moved
+    if (pileId.startsWith(FOUNDATION)) {
         if (
             foundationPiles[pileNumberId].length === numIndex &&
             cardStatus !== Piles.Foundation
         ) {
-            //foundationPiles[pileNumberId].push(cardId)
+            foundationPiles[pileNumberId].push(cardId)
             cardDeckStatus[suitIndex][numIndex] = Piles.Foundation
+            if (previousPileId.startsWith(TABLEAU)) {
+                tableauPiles[previousPileNumberId].pop()
+            }
             return true
         }
     }
-    if (pile.classList.contains("tableau-pile")) {
+    if (pileId.startsWith(TABLEAU)) {
         cardDeckStatus[suitIndex][numIndex] = Piles.Tableau
+        tableauPiles[pileNumberId].push(cardId)
+        if (previousPileId.startsWith(FOUNDATION)) {
+            foundationPiles[previousPileNumberId].pop()
+        } else if (previousPileNumberId != -1) {
+            tableauPiles[previousPileNumberId].pop()
+        }
         return true
     }
     return false
