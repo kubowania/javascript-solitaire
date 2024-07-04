@@ -199,12 +199,22 @@ function checkDragToPile(pileId, cardId, previousPileId) {
     const numIndex = numArray.indexOf(cardNum)
     const cardStatus = cardDeckStatus[suitIndex][numIndex]
 
-    // update the status of the piles after the card has been moved
+    // Update the status of the piles after the card has been moved
     if (pileId.startsWith(FOUNDATION)) {
         if (
             foundationPiles[pileNumberId].length === numIndex &&
             cardStatus !== Piles.Foundation
         ) {
+            if (foundationPiles[pileNumberId].length > 0) {
+                const prevCardId = foundationPiles[pileNumberId][numIndex - 1]
+                const prevCardSuit =
+                    prevCardId[0] == 1
+                        ? prevCardId.substring(2)
+                        : prevCardId.substring(1)
+                if (prevCardSuit != cardSuit) {
+                    return false
+                }
+            }
             foundationPiles[pileNumberId].push(cardId)
             cardDeckStatus[suitIndex][numIndex] = Piles.Foundation
             if (previousPileId.startsWith(TABLEAU)) {
