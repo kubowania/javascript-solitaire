@@ -229,3 +229,8 @@ p {
     position: absolute;
     z-index: 100;
 }
+
+.face-card-svg {
+    width: 100px;
+    height: auto;
+}
