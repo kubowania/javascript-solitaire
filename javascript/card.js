@@ -3,9 +3,9 @@ function createCard(num, suit) {
 
     function getFaceCardSvg(cardType, suitName) {
         const svgs = {
-            K: `<img src="images/king-svgrepo-com.svg" class="face-card-svg ${suitName}" alt="King">`, // SVG for King
-            Q: `<img src="images/queen-svgrepo-com.svg" class="face-card-svg ${suitName}" alt="Queen">`, // SVG for Queen
-            J: `<img src="images/jack-svgrepo-com.svg" class="face-card-svg ${suitName}" alt="Jack">`, // SVG for Jack
+            K: `<img src="images/king-svgrepo-com.svg" class="face-card-svg ${suitName}" alt="King">`,
+            Q: `<img src="images/queen-svgrepo-com.svg" class="face-card-svg ${suitName}" alt="Queen">`,
+            J: `<img src="images/jack-svgrepo-com.svg" class="face-card-svg ${suitName}" alt="Jack">`,
         }
         return svgs[cardType] || ""
     }
